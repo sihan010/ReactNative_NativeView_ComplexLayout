@@ -21,7 +21,7 @@ class App extends Component {
 
   onLoginClicked = event => {
     console.log(event);
-    alert('Received params: ' + JSON.stringify(event.nativeEvent));
+    alert('Received params: ' + JSON.stringify(event));
   };
 
   render() {
@@ -34,11 +34,7 @@ class App extends Component {
           fontSize={18}
           style={{width: '100%', height: '100%'}}
         /> */}
-        <CustomLoginUI
-          userId="sihan"
-          onLoginClicked={this.onLoginClicked}
-          style={{width: '100%', height: '100%'}}
-        />
+        <CustomLoginUI userId="sihan" onLoginClicked={this.onLoginClicked} />
       </View>
     );
   }

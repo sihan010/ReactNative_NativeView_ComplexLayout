@@ -8,14 +8,22 @@ const RCTCustomLoginUI = requireNativeComponent(
 );
 
 export default class CustomLoginUI extends React.PureComponent {
-  _onLoginClicked = event => {
-    if (!this.props.onLoginClicked) {
-      return;
-    }
-    this.props.onLoginClicked(event.nativeEvent);
-  };
-
   render() {
-    return <RCTCustomLoginUI {...this.props} />;
+    return (
+      <RCTCustomLoginUI
+        {...this.props}
+        style={styles.container}
+        onLoginClicked={event => {
+          this.props.onLoginClicked
+            ? this.props.onLoginClicked(event.nativeEvent)
+            : null;
+        }}
+        userId={this.props.userId ? this.props.userId : 'abc'} //If prop is provided then return that prop, else provide default value
+      />
+    );
   }
 }
+
+const styles = {
+  container: {width: '100%', height: '100%'},
+};
